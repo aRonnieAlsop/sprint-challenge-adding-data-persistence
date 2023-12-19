@@ -1,4 +1,3 @@
-// build your `Resource` model here
 const db = require('../../data/dbConfig')
 
 const get = () => {
@@ -17,6 +16,5 @@ const getResourceById = (resource_id) => {
 module.exports = {
     get,
     createResource,
-    getResourceById,
 }
 

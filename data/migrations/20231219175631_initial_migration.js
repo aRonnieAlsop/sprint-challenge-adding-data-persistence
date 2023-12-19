@@ -1,7 +1,3 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
 exports.up = function(knex) {
     return knex.schema
         .createTable('projects', table => {
@@ -40,17 +36,13 @@ exports.up = function(knex) {
                 .inTable('resources')
             
         })
-};
+}
 
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
 exports.down = function(knex) {
     return knex.schema
         .dropTableIfExists('project_resources')
         .dropTableIfExists('tasks')
         .dropTableIfExists('resources')
         .dropTableIfExists('projects')
-};
+}
 

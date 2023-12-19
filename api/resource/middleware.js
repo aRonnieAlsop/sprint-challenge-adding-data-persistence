@@ -1,4 +1,3 @@
-
 const checkPayload = (req, res, next) => {
     const { resource_name } = req.body
 

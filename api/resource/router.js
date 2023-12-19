@@ -1,4 +1,3 @@
-// build your `/api/resources` router here
 const express = require('express')
 const Resource = require('./model')
 const { checkPayload } = require('./middleware')
