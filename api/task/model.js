@@ -20,8 +20,21 @@ const getTasks = async () => {
     return completedTasks
 }
 
+const createTask = async (task) => {
+    const [task_id] = await db('tasks').insert(task)
+    return getTaskById(task_id)
+}
+
+const getTaskById = (task_id) => {
+    return db('tasks').where({ task_id }).first().then(task => ({
+        ...task,
+        task_completed: Boolean(task.task_completed),
+    }))
+}
+
 module.exports = {
     getTasks,
+    createTask,
 }
 
 // - [ ] `[POST] /api/tasks`
