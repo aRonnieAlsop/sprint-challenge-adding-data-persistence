@@ -13,6 +13,17 @@ const get = async () => {
     return listedProjects
 }
 
+const createProject = async (project) => {
+    const [project_id] = await db('projects').insert(project)
+    return getProjectById(project_id)
+}
+
+const getProjectById = (project_id) => {
+    return db('projects').where({ project_id }).first()
+}
+
 module.exports = {
     get,
+    createProject,
+    getProjectById,
 }
