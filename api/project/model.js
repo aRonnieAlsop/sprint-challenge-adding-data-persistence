@@ -4,13 +4,12 @@ const db = require('../../data/dbConfig')
 const get = async () => {
     const projects = await db('projects')
 
-    const listedProjects = projects.map((project) => ({
-        project_name: project.project_name,
-        project_description: project.project_description,
+    const completedProjects = projects.map((project) => ({
+        ...project,
         project_completed: Boolean(project.project_completed),
     }));
 
-    return listedProjects
+    return completedProjects
 }
 
 const createProject = async (project) => {

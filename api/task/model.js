@@ -12,12 +12,12 @@ const getTasks = async () => {
             'project_description'
             )
 
-    const modifiedTasks = tasks.map((task) => ({
+    const completedTasks = tasks.map((task) => ({
         ...task,
         task_completed: Boolean(task.task_completed)
     }))
 
-    return modifiedTasks
+    return completedTasks
 }
 
 module.exports = {
