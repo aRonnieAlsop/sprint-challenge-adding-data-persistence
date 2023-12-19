@@ -1,4 +1,3 @@
-
 const db = require('../../data/dbConfig')
 
 const get = async () => {
@@ -19,8 +18,7 @@ const createProject = async (project) => {
 
 const getProjectById = (project_id) => {
     return db('projects').where({ project_id }).first().then(project => ({
-        project_name: project.project_name,
-        project_description: project.project_description,
+        ...project,
         project_completed: Boolean(project.project_completed),
     }))
 }
@@ -28,5 +26,4 @@ const getProjectById = (project_id) => {
 module.exports = {
     get,
     createProject,
-    getProjectById,
 }
