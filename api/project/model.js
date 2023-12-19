@@ -7,7 +7,7 @@ const get = async () => {
     const listedProjects = projects.map((project) => ({
         project_name: project.project_name,
         project_description: project.project_description,
-        project_completed: project.project_completed ? true : false
+        project_completed: Boolean(project.project_completed),
     }));
 
     return listedProjects
@@ -19,7 +19,11 @@ const createProject = async (project) => {
 }
 
 const getProjectById = (project_id) => {
-    return db('projects').where({ project_id }).first()
+    return db('projects').where({ project_id }).first().then(project => ({
+        project_name: project.project_name,
+        project_description: project.project_description,
+        project_completed: Boolean(project.project_completed),
+    }))
 }
 
 module.exports = {

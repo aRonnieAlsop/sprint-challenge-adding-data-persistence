@@ -16,6 +16,7 @@ router.post('/', checkPayload, async (req, res, next) => {
     try {
         const newProject = await Project.createProject(req.body)
         res.status(201).json(newProject)
+        
     } catch (err) { next(err) }
 })
 
